@@ -5,7 +5,11 @@
 #define DHTTYPE DHT22
 
 //parameters (checktime should be greater than 2)
-const int checkTime = 3;
+const int checkTime = 3 * 1000;
+const int maxHumidity = 85;
+const int minHumidity = 40;
+const int floodTime = 1;
+const int flushTime = 1;
 const String logFileName = "log.txt";
 
 //pins
@@ -17,7 +21,7 @@ const byte pumpOutPin = 2;
 const byte cardActivity = 4;
 
 //General
-unsigned long lastTime;
+unsigned long lastTime = 0;
 
 //logging
 File logFile;
@@ -26,11 +30,20 @@ unsigned int logSession = 0;
 
 //soil moisture sensor
 int soilMoistureValues[sizeof(soilMoisturePins)];
+float averageMoisture;
 
 //dht22
 DHT dht(dht22Pin, DHTTYPE);
 float temperature;
 float humidity;
+
+//pump
+byte pumpState = 0;
+byte pumpLastState = 0;
+bool pumpInState = 0;
+bool pumpOutState = 0;
+unsigned long pumpCheckSetTime = 0;
+bool isFlooded = false;
 
 void setup()
 {
@@ -43,7 +56,19 @@ void setup()
 
 void loop() 
 {
+  if (millis() - lastTime >= checkTime)
+  {
+    ReadDHT22();
+    ReadSoilMoisture();
+    
+    LogFormatter();
+
+    lastTime = millis();
+    Serial.println(pumpState);
+  }
   
+  CheckPumpState();
+  PumpCloseControl();
 }
 
 //General
@@ -52,6 +77,9 @@ void PinsInit()
   pinMode(pumpInPin, OUTPUT);
   pinMode(pumpOutPin, OUTPUT);
   pinMode(cardActivity, OUTPUT);
+  SetPin(pumpInPin, false);
+  SetPin(pumpOutPin, false);
+  SetPin(cardActivity, false);
 }
 
 void SetPin(byte pin, bool state)
@@ -63,7 +91,7 @@ void SetPin(byte pin, bool state)
 bool SD_init(bool serialTimeInput)
 {
   while (!Serial){ }
-  Serial.println(F("init SD... "));
+  Serial.print(F("init SD... "));
   if (!SD.begin(sdPin))
   {
     Serial.println(F("error!"));
@@ -81,10 +109,10 @@ bool SD_init(bool serialTimeInput)
 
 void FileWrite(String fileName, String msg)
 {
-  Serial.println(F("logging:"));
-  Serial.print(msg);
+  Serial.print(F("logging... "));
   SetPin(cardActivity, true);
-  logFile = SD.open(fileName, FILE_WRITE);
+  logFile = SD.open("log.txt", FILE_WRITE);
+  delay(20);
   if (logFile)
   {
     logFile.print(msg);
@@ -100,7 +128,7 @@ void FileWrite(String fileName, String msg)
 
 void FileError()
 {
-  Serial.println(F("error opening File!"));
+  Serial.println(F("File error!"));
   while(true) { }
 }
 
@@ -110,7 +138,7 @@ String ReadSerial()
   return Serial.readString();
 }
 
-String LogFormatter()
+void LogFormatter()
 {
   logLine = F("Log ");
   logLine += String(logSession);
@@ -118,30 +146,48 @@ String LogFormatter()
   logLine += String(humidity);
   logLine += F("\n\tTemp: ");
   logLine += String(temperature);
+  logLine += F("\n\tMoisture Level: ");
+  if (pumpState == 0)
+    logLine += F("right");
+  else if (pumpState == 1)
+    logLine += F("too wet");
+  else
+    logLine += F("too dry");
   logLine += F("\n\tMoisture Vals:");
+  logLine += F("\n\t\tAvg: ");
+  logLine += String(averageMoisture);
   for (byte i = 0; i < sizeof(soilMoisturePins); i++)
   {
     logLine += F("\n\t\t");
-    logLine += String(i);
+    logLine += String(i + 1);
     logLine += F(": ");
     logLine += String(soilMoistureValues[i]);
   }
   logLine += F("\n\n");
   FileWrite(logFileName, logLine);
+  logSession++;
 }
 
 //Soil Moisture Sensor
-void readSoilMoisture()
+void ReadSoilMoisture()
 {
-   for (byte i = 0; i < sizeof(soilMoisturePins); i++)
-   {
+  unsigned int sum = 0;
+  for (byte i = 0; i < sizeof(soilMoisturePins); i++)
+  {
     soilMoistureValues[i] = SMCalibration(analogRead(soilMoisturePins[i]));
-   }
+    sum += soilMoistureValues[i];
+  }
+  averageMoisture = sum / sizeof(soilMoisturePins);
 }
 
 int SMCalibration(int raw)
 {
-  return (int)raw;
+  //example that works with your hand.
+  //In the air = too dry (850+)
+  //One finger = right (400 - 850)
+  //2+ fingers = too wet (400-)
+  unsigned int value = constrain(raw, 0, 1000);
+  return (int)(value / 10);
 }
 
 //DHT22
@@ -164,4 +210,71 @@ void ReadDHT22()
       if (isnan(temperature))
         temperature = -1;
    }
+}
+
+//Pumps
+void CheckPumpState()
+{
+  if (averageMoisture >= maxHumidity)
+  {
+    pumpState = 1;
+  }
+  else if (averageMoisture <= minHumidity)
+  {
+    pumpState = 2;
+  }
+  else
+  {
+    pumpState = 0;
+  }
+
+  if (pumpLastState != pumpState)
+  {
+    if (pumpState == 1)
+    {  
+      if (!isFlooded)
+      {    
+        SetPin(pumpInPin, true);
+        pumpInState = true;
+        isFlooded = true;
+        pumpCheckSetTime = millis();
+        pumpLastState = 1;
+      }
+    }
+    else if (pumpState == 2)
+    {
+      if (isFlooded)
+      {      
+        SetPin(pumpOutPin, true);      
+        pumpOutState = true;
+        pumpCheckSetTime = millis();
+        pumpLastState = 2;
+      }
+    }
+    else
+    {
+      pumpLastState = 0;
+    }
+  }
+}
+
+void PumpCloseControl()
+{
+  if (pumpInState)
+  {
+    if (millis() - pumpCheckSetTime >= floodTime * 1000)
+    {
+      SetPin(pumpInPin, false);
+      pumpInState = false;
+    }
+  }
+  if (pumpOutState)
+  {
+    if (millis() - pumpCheckSetTime >= flushTime * 1000)
+    {
+      SetPin(pumpOutPin, false);
+      isFlooded = false;
+      pumpOutState = false;
+    }
+  }
 }
