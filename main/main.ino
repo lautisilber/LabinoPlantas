@@ -22,11 +22,13 @@ const byte cardActivity = 4;
 
 //General
 unsigned long lastTime = 0;
+bool tick = false;
 
 //logging
 File logFile;
 String logLine;
 unsigned int logSession = 0;
+unsigned int failedWrites = 0;
 
 //soil moisture sensor
 int soilMoistureValues[sizeof(soilMoisturePins)];
@@ -58,17 +60,23 @@ void loop()
 {
   if (millis() - lastTime >= checkTime)
   {
+    tick = true;
     ReadDHT22();
     ReadSoilMoisture();
     
-    LogFormatter();
-
     lastTime = millis();
-    Serial.println(pumpState);
   }
-  
+
   CheckPumpState();
   PumpCloseControl();
+
+  delay(10); //optional
+  
+  if (tick)
+  {
+    LogToSD();
+    tick = false;
+  }
 }
 
 //General
@@ -88,18 +96,27 @@ void SetPin(byte pin, bool state)
 }
 
 // Logging
-bool SD_init(bool serialTimeInput)
+bool SD_init(bool SD_notReinit)
 {
   while (!Serial){ }
   Serial.print(F("init SD... "));
   if (!SD.begin(sdPin))
   {
     Serial.println(F("error!"));
-    while (true) {  }
+    if (SD_notReinit)
+    {
+      while (true) {  }
+    }
   }
-  Serial.println("done");
-  if (serialTimeInput)
+  else if (!SD_notReinit)
   {
+    SetPin(cardActivity, false);
+    Serial.println("done");
+  }
+  
+  if (SD_notReinit)
+  {
+    Serial.println("done");
     Serial.println(F("Write log entry: "));
     logLine = ReadSerial();
     logLine += '\n';
@@ -112,13 +129,13 @@ void FileWrite(String fileName, String msg)
   Serial.print(F("logging... "));
   SetPin(cardActivity, true);
   logFile = SD.open("log.txt", FILE_WRITE);
-  delay(20);
   if (logFile)
   {
     logFile.print(msg);
     logFile.close();
     Serial.println(F("done"));
     SetPin(cardActivity, false);
+    failedWrites = 0;
   }
   else
   {
@@ -129,7 +146,8 @@ void FileWrite(String fileName, String msg)
 void FileError()
 {
   Serial.println(F("File error!"));
-  while(true) { }
+  failedWrites++;
+  SD_init(false);
 }
 
 String ReadSerial()
@@ -138,7 +156,7 @@ String ReadSerial()
   return Serial.readString();
 }
 
-void LogFormatter()
+void LogToSD()
 {
   logLine = F("Log ");
   logLine += String(logSession);
@@ -162,6 +180,11 @@ void LogFormatter()
     logLine += String(i + 1);
     logLine += F(": ");
     logLine += String(soilMoistureValues[i]);
+  }
+  if (failedWrites > 0)
+  {
+    logLine += F("\n\tFAILED WRITES: ");
+    logLine += String(failedWrites);
   }
   logLine += F("\n\n");
   FileWrite(logFileName, logLine);
