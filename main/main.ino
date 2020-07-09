@@ -11,6 +11,7 @@ const int minHumidity = 40;
 const int floodTime = 1;
 const int flushTime = 1;
 const String logFileName = "log.txt";
+unsigned int userInputTimeout = 10 * 1000;
 
 //pins
 const byte sdPin = 10;
@@ -117,8 +118,9 @@ bool SD_init(bool SD_notReinit)
   if (SD_notReinit)
   {
     Serial.println("done");
-    Serial.println(F("Write log entry: "));
+    Serial.print(F("Write log entry: "));
     logLine = ReadSerial();
+    Serial.println(F("done"));
     logLine += '\n';
     FileWrite(logFileName, logLine);
   }
@@ -152,7 +154,12 @@ void FileError()
 
 String ReadSerial()
 {
-  while (Serial.available() == 0) { }
+  unsigned int userInputTime = millis();
+  while (Serial.available() == 0)
+  {
+    if (millis() - userInputTime >= userInputTimeout)
+      break;
+  }
   return Serial.readString();
 }
 
@@ -238,11 +245,11 @@ void ReadDHT22()
 //Pumps
 void CheckPumpState()
 {
-  if (averageMoisture >= maxHumidity)
+  if (averageMoisture <= minHumidity)
   {
     pumpState = 1;
   }
-  else if (averageMoisture <= minHumidity)
+  else if (averageMoisture >= maxHumidity)
   {
     pumpState = 2;
   }
