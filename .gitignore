@@ -5,3 +5,7 @@
 *.CSV
 *.xlxs
 *.XLSX
+*.json
+*.JSON
+*.swp
+.DS_Store

@@ -158,7 +158,7 @@ String ReadSerial()
   while (Serial.available() == 0)
   {
     if (millis() - userInputTime >= userInputTimeout)
-      break;
+      return F("Session begin");
   }
   return Serial.readString();
 }
