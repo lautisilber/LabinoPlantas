@@ -3,8 +3,11 @@
 *.TXT
 *.csv
 *.CSV
-*.xlxs
+Log.xlsx
 *.XLSX
+*.xlsx#
+*.XLSX#
+*.numbers
 *.json
 *.JSON
 *.swp
