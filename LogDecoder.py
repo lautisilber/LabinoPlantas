@@ -1,15 +1,26 @@
 import os
-import tkinter as tk
-from tkinter import filedialog
 import xlsxwriter
+guiEnabled = False
+try:
+    import tkinter as tk
+    from tkinter import filedialog
+    guiEnabled = True
+except:
+    guiEnabled = False
 
-def PathSelect():
-    root = tk.Tk()
-    root.withdraw()
+def PathSelect(gui):
+    assert isinstance(gui, bool)
+    logTxtPath = ''
+    savePath = ''
+    if gui:
+        root = tk.Tk()
+        root.withdraw()
 
-    logTxtPath = filedialog.askopenfilename(initialdir = os.path.realpath(__file__), title = 'Select log file', filetypes = (('TXT files', '*.TXT'), ('txt files', '*.txt'), ('all files', '*.*')))
-    savePath = filedialog.askdirectory(initialdir = os.path.realpath(__file__), title = 'Select save directory')
-
+        logTxtPath = filedialog.askopenfilename(initialdir = os.path.realpath(__file__), title = 'Select log file', filetypes = (('TXT files', '*.TXT'), ('txt files', '*.txt'), ('all files', '*.*')))
+        savePath = filedialog.askdirectory(initialdir = os.path.realpath(__file__), title = 'Select save directory')
+    else:
+        logTxtPath = input('Enter log file path: ')
+        savePath = input('Enter save directory: ')
     print ('Log Source: ' + logTxtPath)
     print ('Save Dir: ' + savePath)
     return logTxtPath, savePath
@@ -174,6 +185,6 @@ def CSVToExcel(saveDir, sessionRows):
     print('guat')
 
 if __name__ == '__main__':
-    logPath, saveDir = PathSelect()
+    logPath, saveDir = PathSelect(guiEnabled)
     sr = LogToCSV(logPath, saveDir)
     CSVToExcel(saveDir, sr)
