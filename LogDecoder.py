@@ -102,7 +102,6 @@ def LogToCSV(logFile, saveDir):
 
 def CSVToExcel(saveDir, sessionRows):
     CHART_SPACING = 15
-
     workbook = xlsxwriter.Workbook('Log.xlsx')
     worksheet1 = workbook.add_worksheet()
     worksheet2 = workbook.add_worksheet()
@@ -172,6 +171,7 @@ def CSVToExcel(saveDir, sessionRows):
         n += 4
 
     workbook.close()
+    print('guat')
 
 if __name__ == '__main__':
     logPath, saveDir = PathSelect()

@@ -11,12 +11,12 @@ const int minHumidity = 40;
 const int floodTime = 1;
 const int flushTime = 1;
 const String logFileName = "log.txt";
-unsigned int userInputTimeout = 10 * 1000;
+unsigned int userInputTimeout = 30 * 1000;
 
 //pins
 const byte sdPin = 10;
 const byte dht22Pin = 9;
-const byte soilMoisturePins[] = {A0};
+const byte soilMoisturePins[] = {A0, A0};
 const byte pumpInPin = 3;
 const byte pumpOutPin = 2;
 const byte cardActivity = 4;
@@ -120,7 +120,8 @@ bool SD_init(bool SD_notReinit)
     Serial.println("done");
     Serial.print(F("Write log entry: "));
     logLine = ReadSerial();
-    Serial.println(F("done"));
+    Serial.print(F("done: "));
+    Serial.println(logLine);
     logLine += '\n';
     FileWrite(logFileName, logLine);
   }

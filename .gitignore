@@ -1,6 +1,4 @@
 /save_data
-*.txt
-*.TXT
 *.csv
 *.CSV
 Log.xlsx
