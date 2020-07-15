@@ -13,16 +13,21 @@ def PathSelect(gui):
     logTxtPath = ''
     savePath = ''
     if gui:
-        root = tk.Tk()
-        root.withdraw()
-
-        logTxtPath = filedialog.askopenfilename(initialdir = os.path.realpath(__file__), title = 'Select log file', filetypes = (('TXT files', '*.TXT'), ('txt files', '*.txt'), ('all files', '*.*')))
-        savePath = filedialog.askdirectory(initialdir = os.path.realpath(__file__), title = 'Select save directory')
+        logTxtPath, savePath = TkinterGUI()
     else:
         logTxtPath = input('Enter log file path: ')
         savePath = input('Enter save directory: ')
     print ('Log Source: ' + logTxtPath)
     print ('Save Dir: ' + savePath)
+    return logTxtPath, savePath
+
+def TkinterGUI():
+    root = tk.Tk()
+    root.withdraw()
+
+    logTxtPath = filedialog.askopenfilename(initialdir = os.path.realpath(__file__), title = 'Select log file', filetypes = (('TXT files', '*.TXT'), ('txt files', '*.txt'), ('all files', '*.*')))
+    savePath = filedialog.askdirectory(initialdir = os.path.realpath(__file__), title = 'Select save directory')
+
     return logTxtPath, savePath
 
 def LogToCSV(logFile, saveDir):
@@ -182,7 +187,6 @@ def CSVToExcel(saveDir, sessionRows):
         n += 4
 
     workbook.close()
-    print('guat')
 
 if __name__ == '__main__':
     logPath, saveDir = PathSelect(guiEnabled)

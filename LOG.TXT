@@ -30,7 +30,7 @@ Log 0:
 		Avg: 38.00
 		1: 38
 
-      њ  ИZ  њ     ,10
+      пїЅ  пїЅZ  пїЅ     ,10
 	Moisture Level: right
 	Moisture Vals:
 		Avg: 38.00
@@ -46,7 +46,7 @@ Log 0:
 		Avg: 21.00
 		1: 21
 
-      d  ИZ  d     ,00
+      d  пїЅZ  d     ,00
 	Moisture Level: too dry
 	Moisture Vals:
 		Avg: 26.00
@@ -81,18 +81,8 @@ Log 0:
 	Moisture Vals:
 		Avg: 95.00
 		1: 95
-
-s i x t h   t r y 
  
- L o g   0 : 
- 	 H u m :   5 0 . 9 0 
- 	 T e m p :   1 8 . 9 0 
- 	 M o i s t u r e   L e v e l :   t o o   w e t 
- 	 M o i s t u r e   V a l s : 
- 	 	 A v g :   9 5 . 0 0 
- 	 	 1 :   9 5 
- 
- seventh try
+seventh try
 
 Log 0:
 	Hum: 51.30
@@ -6043,23 +6033,8 @@ Log 396:
 		Avg: 100.00
 		1: 100
 
-@‡п Я«мая
-ы@‡о
-ая
-аю
-ая oЮ+даю
-ая@ы
-@Гћ
-ая@Гћ
-ая
- ю  g.t@ц@ц
-@я
-@‡о@‡о
-@‡о@Гћ
-я@ы
-я@‡о
-ю@‡о
-љ
+@@@
+
 Log 0:
 	Hum: 45.20
 	Temp: 18.90
@@ -7453,7 +7428,7 @@ Log 183:
 		Avg: 100.00
 		1: 100
 
-я
+пїЅ
 Log 0:
 	Hum: 46.30
 	Temp: 19.30
@@ -7951,7 +7926,7 @@ Log 65:
 		Avg: 100.00
 		1: 100
 
-й
+пїЅ
 Log 0:
 	Hum: 47.60
 	Temp: 19.40
@@ -9585,7 +9560,7 @@ Log 19:
 		Avg: 100.00
 		1: 100
 
-щ
+пїЅ
 Log 0:
 	Hum: 46.10
 	Temp: 19.80
@@ -9618,7 +9593,7 @@ Log 3:
 		Avg: 100.00
 		1: 100
 
-я
+пїЅ
 Log 0:
 	Hum: 46.40
 	Temp: 19.90
@@ -9699,7 +9674,7 @@ Log 9:
 		Avg: 100.00
 		1: 100
 
-я
+пїЅ
 Log 0:
 	Hum: 46.30
 	Temp: 19.90

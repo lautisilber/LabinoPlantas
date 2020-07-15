@@ -10,3 +10,4 @@ Log.xlsx
 *.JSON
 *.swp
 .DS_Store
+/Logs
