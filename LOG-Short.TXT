@@ -1,0 +1,2476 @@
+hi
+
+Log 0:
+	Hum: 44.30
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 95.00
+		1: 95
+
+Log 1:
+	Hum: 46.10
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 2:
+	Hum: 46.10
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 3:
+	Hum: 46.20
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 4:
+	Hum: 46.20
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 5:
+	Hum: 46.20
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 6:
+	Hum: 46.20
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 7:
+	Hum: 46.30
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 8:
+	Hum: 46.30
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 9:
+	Hum: 46.30
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 10:
+	Hum: 46.20
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 11:
+	Hum: 46.20
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 12:
+	Hum: 46.20
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 13:
+	Hum: 46.10
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 14:
+	Hum: 46.00
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 15:
+	Hum: 46.00
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 16:
+	Hum: 46.00
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 17:
+	Hum: 46.00
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 18:
+	Hum: 46.00
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 19:
+	Hum: 46.10
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+stange
+Log 0:
+	Hum: 46.10
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 95.00
+		1: 95
+
+Log 1:
+	Hum: 46.30
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 2:
+	Hum: 46.30
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 3:
+	Hum: 46.30
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+strange 2
+Log 0:
+	Hum: 46.40
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 95.00
+		1: 95
+
+Log 1:
+	Hum: 46.60
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 2:
+	Hum: 46.60
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 3:
+	Hum: 46.60
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 4:
+	Hum: 46.60
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 5:
+	Hum: 46.60
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 6:
+	Hum: 46.60
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 7:
+	Hum: 46.40
+	Temp: 19.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 8:
+	Hum: 46.40
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 9:
+	Hum: 46.30
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+wtf
+Log 0:
+	Hum: 46.30
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 1:
+	Hum: 46.30
+	Temp: 20.00
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 2:
+	Hum: 46.20
+	Temp: 19.90
+	Moisture Level: too wet
+	Moisture Vals:
+		Avg: 26.00
+		1: 26
+
+Log 3:
+	Hum: 46.20
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 4:
+	Hum: 46.10
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 5:
+	Hum: 46.00
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+oddities
+Log 0:
+	Hum: 46.00
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 94.00
+		1: 94
+
+Log 1:
+	Hum: 45.60
+	Temp: 20.00
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 2:
+	Hum: 45.50
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 3:
+	Hum: 45.50
+	Temp: 20.00
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 4:
+	Hum: 45.50
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+hi
+
+Log 0:
+	Hum: 45.50
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 94.00
+		1: 94
+
+Log 1:
+	Hum: 45.50
+	Temp: 20.00
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 2:
+	Hum: 45.50
+	Temp: 19.90
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Log 3:
+	Hum: 45.50
+	Temp: 20.00
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+que tal?
+
+Log 0:
+	Hum: 45.50
+	Temp: 20.00
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 94.00
+		1: 94
+
+Log 1:
+	Hum: 45.20
+	Temp: 20.00
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+
+Session begin
+Log 0:
+	Hum: 42.70
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 96.00
+		1: 96
+		2: 96
+
+Log 1:
+	Hum: 43.80
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 2:
+	Hum: 43.70
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 3:
+	Hum: 43.70
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 4:
+	Hum: 43.60
+	Temp: 21.10
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 5:
+	Hum: 43.60
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 6:
+	Hum: 43.50
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 7:
+	Hum: 43.40
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 8:
+	Hum: 43.40
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 9:
+	Hum: 43.40
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 10:
+	Hum: 43.30
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 11:
+	Hum: 43.30
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 12:
+	Hum: 43.20
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 13:
+	Hum: 43.20
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 14:
+	Hum: 43.20
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 15:
+	Hum: 43.20
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 16:
+	Hum: 43.20
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 17:
+	Hum: 43.20
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 18:
+	Hum: 43.30
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 19:
+	Hum: 43.30
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 20:
+	Hum: 43.30
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 21:
+	Hum: 43.30
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 22:
+	Hum: 43.40
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 23:
+	Hum: 43.30
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 24:
+	Hum: 43.20
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 25:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 26:
+	Hum: 43.10
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 27:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 28:
+	Hum: 43.10
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 29:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 30:
+	Hum: 43.10
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 31:
+	Hum: 43.10
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 32:
+	Hum: 43.10
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 33:
+	Hum: 43.10
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 34:
+	Hum: 43.10
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 35:
+	Hum: 43.10
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 36:
+	Hum: 43.10
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 37:
+	Hum: 43.10
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 38:
+	Hum: 43.10
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 39:
+	Hum: 43.10
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 40:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 41:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 42:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 43:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 44:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 45:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 46:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 47:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 48:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 49:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 50:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 51:
+	Hum: 43.20
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 52:
+	Hum: 43.10
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 53:
+	Hum: 43.10
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 68:
+	Hum: 42.60
+	Temp: 21.40
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+	FAILED WRITES: 14
+
+Session begin
+Log 0:
+	Hum: 42.50
+	Temp: 21.30
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 94.00
+		1: 94
+		2: 94
+
+Log 1:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 2:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 3:
+	Hum: 42.50
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 4:
+	Hum: 42.50
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 5:
+	Hum: 42.50
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 6:
+	Hum: 42.50
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 7:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 8:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 9:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 10:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 11:
+	Hum: 42.60
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 12:
+	Hum: 42.60
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 13:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+supermega sesion desde Windows!!
+
+Log 0:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 94.00
+		1: 94
+		2: 94
+
+Log 1:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 2:
+	Hum: 42.50
+	Temp: 21.20
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 3:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 4:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 5:
+	Hum: 42.70
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 6:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 7:
+	Hum: 42.70
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 8:
+	Hum: 42.70
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 9:
+	Hum: 42.70
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 10:
+	Hum: 42.70
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 11:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 12:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 13:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 14:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+supermega sesoin desde Windows 2
+
+Log 0:
+	Hum: 42.60
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 94.00
+		1: 94
+		2: 94
+
+Log 1:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 2:
+	Hum: 42.40
+	Temp: 21.10
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 3:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 4:
+	Hum: 42.70
+	Temp: 21.50
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 5:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 6:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 7:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 8:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 9:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 10:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 11:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 12:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 13:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 14:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 15:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 16:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 17:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 18:
+	Hum: 42.70
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 19:
+	Hum: 42.60
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 20:
+	Hum: 42.60
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 21:
+	Hum: 42.50
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 22:
+	Hum: 42.50
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 23:
+	Hum: 42.50
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 24:
+	Hum: 42.40
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 25:
+	Hum: 42.40
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 26:
+	Hum: 42.40
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 27:
+	Hum: 42.40
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 28:
+	Hum: 42.30
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 29:
+	Hum: 42.30
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 30:
+	Hum: 42.30
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 31:
+	Hum: 42.30
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 32:
+	Hum: 42.30
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 33:
+	Hum: 42.30
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 34:
+	Hum: 42.30
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 35:
+	Hum: 42.30
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 36:
+	Hum: 42.20
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 37:
+	Hum: 42.20
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 38:
+	Hum: 42.20
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 39:
+	Hum: 42.20
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 40:
+	Hum: 42.20
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 41:
+	Hum: 42.20
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 42:
+	Hum: 42.20
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 43:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 44:
+	Hum: 42.20
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 45:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 46:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 47:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 48:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 49:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 50:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 51:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 52:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 53:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 54:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 55:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 56:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 57:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 58:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 59:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 60:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 61:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 62:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 63:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 64:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 65:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 66:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 67:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 68:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 69:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 70:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 71:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 72:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 73:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 74:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 75:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 76:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 77:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 78:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 79:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 80:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 81:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 82:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 83:
+	Hum: 42.00
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 84:
+	Hum: 42.00
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 85:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 86:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 87:
+	Hum: 42.10
+	Temp: 21.60
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 88:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 89:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 90:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 91:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 92:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 93:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 94:
+	Hum: 42.20
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 95:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 96:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 97:
+	Hum: 42.10
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 98:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 99:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 100:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 101:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 102:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 103:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 104:
+	Hum: 42.10
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 105:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 106:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 107:
+	Hum: 42.10
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 108:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 109:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 110:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 111:
+	Hum: 42.10
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 112:
+	Hum: 42.00
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 113:
+	Hum: 42.00
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 114:
+	Hum: 42.00
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 115:
+	Hum: 42.00
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 116:
+	Hum: 42.00
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 117:
+	Hum: 42.00
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 118:
+	Hum: 42.10
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 119:
+	Hum: 42.10
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 120:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 121:
+	Hum: 42.10
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 122:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 123:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 124:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 125:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 126:
+	Hum: 42.10
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 127:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 128:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 129:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 130:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 131:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 132:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 133:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 134:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 135:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 136:
+	Hum: 42.20
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 137:
+	Hum: 42.10
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 138:
+	Hum: 42.00
+	Temp: 21.70
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 139:
+	Hum: 42.00
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 140:
+	Hum: 42.00
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 141:
+	Hum: 42.00
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 142:
+	Hum: 42.00
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100
+
+Log 143:
+	Hum: 42.00
+	Temp: 21.80
+	Moisture Level: too dry
+	Moisture Vals:
+		Avg: 100.00
+		1: 100
+		2: 100

@@ -13,21 +13,16 @@ def PathSelect(gui):
     logTxtPath = ''
     savePath = ''
     if gui:
-        logTxtPath, savePath = TkinterGUI()
+        root = tk.Tk()
+        root.withdraw()
+
+        logTxtPath = filedialog.askopenfilename(initialdir = os.path.realpath(__file__), title = 'Select log file', filetypes = (('TXT files', '*.TXT'), ('txt files', '*.txt'), ('all files', '*.*')))
+        savePath = filedialog.askdirectory(initialdir = os.path.realpath(__file__), title = 'Select save directory')
     else:
         logTxtPath = input('Enter log file path: ')
         savePath = input('Enter save directory: ')
     print ('Log Source: ' + logTxtPath)
     print ('Save Dir: ' + savePath)
-    return logTxtPath, savePath
-
-def TkinterGUI():
-    root = tk.Tk()
-    root.withdraw()
-
-    logTxtPath = filedialog.askopenfilename(initialdir = os.path.realpath(__file__), title = 'Select log file', filetypes = (('TXT files', '*.TXT'), ('txt files', '*.txt'), ('all files', '*.*')))
-    savePath = filedialog.askdirectory(initialdir = os.path.realpath(__file__), title = 'Select save directory')
-
     return logTxtPath, savePath
 
 def LogToCSV(logFile, saveDir):
@@ -169,10 +164,11 @@ def CSVToExcel(saveDir, sessionRows):
             'marker' : {'type' : 'circle', 'border': {'color': 'red'}, 'fill':   {'color': 'red'}},
             'line' : {'color' : 'red'},
         })
-        soilMoistureCharts[i].add_series({
-            'name' : ['Sheet1', 0, 5, 0, 5 + sess[1]],
+        for n in range(sess[1]):
+            soilMoistureCharts[i].add_series({
+            'name' : ['Sheet1', 0, 5 + n],
             'categories' : ['Sheet1', sess[0] + 1, 1, sess[0] + 1 + sess[2], 1],
-            'values' : ['Sheet1', sess[0] + 1, 5, sess[0] + sess[2], 5 + sess[1] - 1],
+            'values' : ['Sheet1', sess[0] + 1, 5 + n, sess[0] + sess[2], 5 + n],
             'marker' : {'type' : 'circle', 'border': {'color': 'blue'}, 'fill':   {'color': 'blue'}},
             'line' : {'color' : 'blue'},
         })

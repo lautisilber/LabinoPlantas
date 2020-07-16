@@ -19,39 +19,85 @@ class App:
         self.savePath = ''
         self.sessionInfo = list()
 
+        self.txtText = tk.StringVar()
+        self.saveText = tk.StringVar()
+        self.statusText = tk.StringVar()
+        self.txtText.set('')
+        self.saveText.set('')
+        self.statusText.set('')
+
+        self.txtLablel = tk.Label(self.mFrame, textvariable=self.txtText)
+        self.saveLabel = tk.Label(self.mFrame, textvariable=self.saveText)
+        self.statusLabel = tk.Label(self.mFrame, textvariable=self.statusText)
+
         self.txtButton = tk.Button(self.mFrame, text='Select log file', fg='black', command=self.FileDialog)
         self.saveButton = tk.Button(self.mFrame, text='Select save directory', fg='black', command=self.DirDialog)
-        self.dropboxButton = tk.Button(self.mFrame, text='Online', fg='black', state=tk.DISABLED, command=self.initDropbox())
-        self.uploadButton = tk.Button(self.mFrame, text='Upload', fg='black')
+        self.readButton = tk.Button(self.mFrame, text='Read', fg='black', command=self.ReadLog)
+        self.dropboxButton = tk.Button(self.mFrame, text='Online', fg='black', state=tk.DISABLED, command=self.initDropbox)
+        self.uploadButton = tk.Button(self.mFrame, text='Upload', fg='black', state=tk.DISABLED, command=self.SaveToDropbox)
+
+        self.txtLablel.pack()
+        self.saveLabel.pack()
 
         self.txtButton.pack()
         self.saveButton.pack()
+        self.readButton.pack()
         self.dropboxButton.pack()
         self.uploadButton.pack()
+
+        self.statusLabel.pack()
 
         self.initDropbox()
 
         self.root.mainloop()
 
+    def ReadLog(self):
+        self.LogToCSV()
+        self.CSVToExcel()
+        self.CheckIfOnline()
+        self.EnableUpload()
+
     def FileDialog(self):
         self.logTxtPath = filedialog.askopenfilename(initialdir = os.path.realpath(__file__), title = 'Select log file', filetypes = (('TXT files', '*.TXT'), ('txt files', '*.txt'), ('all files', '*.*')))
+        self.txtText.set(self.logTxtPath)
+        self.CheckIfOnline()
+        self.EnableUpload()
 
     def DirDialog(self):
         self.savePath = filedialog.askdirectory(initialdir = os.path.realpath(__file__), title = 'Select save directory')
+        self.saveText.set(self.savePath)
+        self.CheckIfOnline()
+        self.EnableUpload()
 
     def initDropbox(self):
         self.dbx = dropbox.Dropbox(self.TOKEN)
+        self.CheckIfOnline()
+        self.EnableUpload()
+
+    def CheckIfOnline(self):
         try:
             self.dbx.users_get_current_account()
             self.isOnline = True
-            #self.dropboxButton.config()
-            #self.dropboxButton['title'] = 'Online'
+            self.dropboxButton['state'] = tk.DISABLED
+            self.dropboxButton['text'] = 'Online'
         except:
             print('Offline!')
             self.isOnline = False
-            #self.dropboxButton['state'] = tk.NORMAL
-            #self.dropboxButton['title'] = 'Go Online'
-        print('Is Online: ' + str(self.isOnline))
+            self.dropboxButton['state'] = tk.NORMAL
+            self.dropboxButton['text'] = 'Go Online'
+        self.UpdateStatus()
+
+    def EnableUpload(self):
+        if os.path.exists(os.path.join(self.savePath, 'Log.csv')) and os.path.exists(os.path.join(self.savePath, 'Log.xlsx')) and self.isOnline:
+            self.uploadButton['state'] = tk.NORMAL
+        else:
+            self.uploadButton['state'] = tk.DISABLED
+
+    def UpdateStatus(self):
+        if self.isOnline:
+            self.statusText.set('Online')
+        else:
+            self.statusText.set('Offline')
 
     def LogToCSV(self):
         numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -190,10 +236,11 @@ class App:
                 'marker' : {'type' : 'circle', 'border': {'color': 'red'}, 'fill':   {'color': 'red'}},
                 'line' : {'color' : 'red'},
             })
-            soilMoistureCharts[i].add_series({
-                'name' : ['Sheet1', 0, 5, 0, 5 + sess[1]],
+            for n in range(sess[1]):
+                soilMoistureCharts[i].add_series({
+                'name' : ['Sheet1', 0, 5 + n],
                 'categories' : ['Sheet1', sess[0] + 1, 1, sess[0] + 1 + sess[2], 1],
-                'values' : ['Sheet1', sess[0] + 1, 5, sess[0] + sess[2], 5 + sess[1] - 1],
+                'values' : ['Sheet1', sess[0] + 1, 5 + n, sess[0] + sess[2], 5 + n],
                 'marker' : {'type' : 'circle', 'border': {'color': 'blue'}, 'fill':   {'color': 'blue'}},
                 'line' : {'color' : 'blue'},
             })
@@ -211,11 +258,14 @@ class App:
 
     def SaveToDropbox(self):
         
+        self.statusText.set('Uploading...')
+        self.statusLabel.update_idletasks()
         with open(os.path.join(self.savePath, 'Log.csv'), 'rb') as f:
-            self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + date.today() + '.csv')
+            self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.csv')
 
         with open(os.path.join(self.savePath, 'Log.xlsx'), 'rb') as f:
-            self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + date.today() + '.xlsx')
+            self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.xlsx')
+        self.UpdateStatus()
 
 if __name__ == '__main__':
     app = App()
