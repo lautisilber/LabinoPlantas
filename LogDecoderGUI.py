@@ -7,7 +7,8 @@ import dropbox
 class App:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title = 'Log Reader'
+        self.root.title('Log Reader')
+        self.root.minsize(width=100, height=50)
         self.mFrame = tk.Frame(self.root)
         self.mFrame.grid(row=0, column=0)
 
@@ -22,13 +23,13 @@ class App:
         self.txtText = tk.StringVar()
         self.saveText = tk.StringVar()
         self.statusText = tk.StringVar()
-        self.txtText.set('')
-        self.saveText.set('')
+        self.txtText.set('\t\t\t\t\t\t')
+        self.saveText.set('\t\t\t\t\t\t')
         self.statusText.set('')
 
         self.txtLablel = tk.Label(self.mFrame, textvariable=self.txtText)
         self.saveLabel = tk.Label(self.mFrame, textvariable=self.saveText)
-        self.statusLabel = tk.Label(self.mFrame, textvariable=self.statusText)
+        self.statusLabel = tk.Label(self.root, textvariable=self.statusText, relief=tk.SUNKEN, anchor='e')
 
         self.txtButton = tk.Button(self.mFrame, text='Select log file', fg='black', command=self.FileDialog)
         self.saveButton = tk.Button(self.mFrame, text='Select save directory', fg='black', command=self.DirDialog)
@@ -36,16 +37,16 @@ class App:
         self.dropboxButton = tk.Button(self.mFrame, text='Online', fg='black', state=tk.DISABLED, command=self.initDropbox)
         self.uploadButton = tk.Button(self.mFrame, text='Upload', fg='black', state=tk.DISABLED, command=self.SaveToDropbox)
 
-        self.txtLablel.pack()
-        self.saveLabel.pack()
+        self.txtLablel.grid(row=0, column=1)
+        self.saveLabel.grid(row=1, column=1)
 
-        self.txtButton.pack()
-        self.saveButton.pack()
-        self.readButton.pack()
-        self.dropboxButton.pack()
-        self.uploadButton.pack()
+        self.txtButton.grid(row=0, column=0)
+        self.saveButton.grid(row=1, column=0)
+        self.readButton.grid(row=2, column=0)
+        self.dropboxButton.grid(row=3, column=0)
+        self.uploadButton.grid(row=4, column=0)
 
-        self.statusLabel.pack()
+        self.statusLabel.grid(row=1, column=0, sticky='we')
 
         self.initDropbox()
 
@@ -256,16 +257,56 @@ class App:
 
         workbook.close()
 
+    def CheckIfFileExistsDbx(self, dbxPath):
+        bExists = False
+        try:
+            a = self.dbx.files_get_metadata(dbxPath)
+            bExists = True
+        except:
+            bExists = False
+        return bExists
+
+    def PromptOverwrite(self):
+        t = tk.Toplevel(self.root)
+        t.wm_title('File already exists!')
+        tk.Label(t, text='File already exists!').grid(row=0, column=1)
+        selected = 0
+        def PromptChoice(choice):
+            selected = choice
+            t.quit()
+            t.destroy()
+        tk.Button(t, text='Cancel', command=lambda: PromptChoice(0)).grid(row=1, column=0)
+        tk.Button(t, text='Overwrite', command=lambda: PromptChoice(1)).grid(row=1, column=1)
+        tk.Button(t, text='Keep Both', command=lambda: PromptChoice(2)).grid(row=1, column=2)
+        print('pinga')
+        return selected
+
     def SaveToDropbox(self):
         
         self.statusText.set('Uploading...')
         self.statusLabel.update_idletasks()
-        with open(os.path.join(self.savePath, 'Log.csv'), 'rb') as f:
-            self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.csv')
 
-        with open(os.path.join(self.savePath, 'Log.xlsx'), 'rb') as f:
-            self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.xlsx')
-        self.UpdateStatus()
+        if self.CheckIfFileExistsDbx(os.path.join(self.savePath, 'Log.csv')):
+            selection = self.PromptOverwrite()
+            if selection == 0:
+                pass
+            if selection == 1:
+                with open(os.path.join(self.savePath, 'Log.csv'), 'rb') as f:
+                    self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.csv', mode=dropbox.files.WriteMode.overwrite)
+        else:
+            with open(os.path.join(self.savePath, 'Log.csv'), 'rb') as f:
+                self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.csv')
+
+        if self.CheckIfFileExistsDbx(os.path.join(self.savePath, 'Log.xlsx')):
+            selection = self.PromptOverwrite()
+            if selection == 0:
+                pass
+            if selection == 1:
+                with open(os.path.join(self.savePath, 'Log.xlsx'), 'rb') as f:
+                    self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.xlsx', mode=dropbox.files.WriteMode.overwrite)
+        else:
+            with open(os.path.join(self.savePath, 'Log.csv'), 'rb') as f:
+                self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.xlsx')
 
 if __name__ == '__main__':
     app = App()
