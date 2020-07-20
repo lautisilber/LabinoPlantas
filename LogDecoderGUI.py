@@ -10,7 +10,7 @@ class App:
         self.root.title('Log Reader')
         self.root.minsize(width=100, height=50)
         self.mFrame = tk.Frame(self.root)
-        self.mFrame.grid(row=0, column=0)
+        self.mFrame.grid(row=1, column=0, pady=3)
 
         self.dbx = dropbox.Dropbox
         self.TOKEN = 'LWodg3xsWmAAAAAAAAAAy9NimXa2nfaUzCALxoKf93Cwo1TCy_Y8Xv6EOcqGwhpz'
@@ -27,8 +27,10 @@ class App:
         self.saveText.set('\t\t\t\t\t\t')
         self.statusText.set('')
 
-        self.txtLablel = tk.Label(self.mFrame, textvariable=self.txtText)
-        self.saveLabel = tk.Label(self.mFrame, textvariable=self.saveText)
+        tk.Label(self.root, text="Conversor de datos de arduino a excel!").grid(row=0, column=0, padx=10, pady=5)
+
+        self.txtLablel = tk.Label(self.mFrame, textvariable=self.txtText, relief=tk.RIDGE)
+        self.saveLabel = tk.Label(self.mFrame, textvariable=self.saveText, relief=tk.RIDGE)
         self.statusLabel = tk.Label(self.root, textvariable=self.statusText, relief=tk.SUNKEN, anchor='e')
 
         self.txtButton = tk.Button(self.mFrame, text='Select log file', fg='black', command=self.FileDialog)
@@ -37,16 +39,16 @@ class App:
         self.dropboxButton = tk.Button(self.mFrame, text='Online', fg='black', state=tk.DISABLED, command=self.initDropbox)
         self.uploadButton = tk.Button(self.mFrame, text='Upload', fg='black', state=tk.DISABLED, command=self.SaveToDropbox)
 
-        self.txtLablel.grid(row=0, column=1)
-        self.saveLabel.grid(row=1, column=1)
+        self.txtLablel.grid(row=0, column=1, padx=10, pady=5)
+        self.saveLabel.grid(row=1, column=1, padx=10, pady=5)
 
-        self.txtButton.grid(row=0, column=0)
-        self.saveButton.grid(row=1, column=0)
-        self.readButton.grid(row=2, column=0)
-        self.dropboxButton.grid(row=3, column=0)
-        self.uploadButton.grid(row=4, column=0)
+        self.txtButton.grid(row=0, column=0, padx=10, pady=5)
+        self.saveButton.grid(row=1, column=0, padx=10, pady=5)
+        self.readButton.grid(row=2, column=0, padx=10, pady=5)
+        self.dropboxButton.grid(row=3, column=0, padx=10, pady=5)
+        self.uploadButton.grid(row=4, column=0, padx=10, pady=5)
 
-        self.statusLabel.grid(row=1, column=0, sticky='we')
+        self.statusLabel.grid(row=2, column=0, sticky='we')
 
         self.initDropbox()
 
@@ -307,6 +309,8 @@ class App:
         else:
             with open(os.path.join(self.savePath, 'Log.csv'), 'rb') as f:
                 self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.xlsx')
+
+        self.UpdateStatus()
 
 if __name__ == '__main__':
     app = App()
