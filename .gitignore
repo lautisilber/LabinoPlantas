@@ -9,5 +9,7 @@ Log.xlsx
 *.json
 *.JSON
 *.swp
+*.TXT
+*.txt
 .DS_Store
 /Logs
