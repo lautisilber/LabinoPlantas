@@ -1,4 +1,5 @@
-import os, xlsxwriter
+import xlsxwriter
+from os import path, makedirs
 from datetime import date
 import tkinter as tk
 from tkinter import filedialog
@@ -19,10 +20,19 @@ class App:
         self.logTxtPath = ''
         self.savePath = ''
         self.sessionInfo = list()
+        self.csvDbxSave = '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.csv'
+        self.xlsxDbxSave = '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.xlsx'
 
+        self.dbxUploadReady = False
+        self.dbxUploadOrNots = [False, False]
+
+        self.radioButtons1Var = tk.BooleanVar()
+        self.radioButtons2Var = tk.BooleanVar()
         self.txtText = tk.StringVar()
         self.saveText = tk.StringVar()
         self.statusText = tk.StringVar()
+        self.radioButtons1Var.set(False)
+        self.radioButtons2Var.set(False)
         self.txtText.set('\t\t\t\t\t\t')
         self.saveText.set('\t\t\t\t\t\t')
         self.statusText.set('')
@@ -37,7 +47,7 @@ class App:
         self.saveButton = tk.Button(self.mFrame, text='Select save directory', fg='black', command=self.DirDialog)
         self.readButton = tk.Button(self.mFrame, text='Read', fg='black', command=self.ReadLog)
         self.dropboxButton = tk.Button(self.mFrame, text='Online', fg='black', state=tk.DISABLED, command=self.initDropbox)
-        self.uploadButton = tk.Button(self.mFrame, text='Upload', fg='black', state=tk.DISABLED, command=self.SaveToDropbox)
+        self.uploadButton = tk.Button(self.mFrame, text='Upload', fg='black', state=tk.DISABLED, command=self.OnUploadPress)
 
         self.txtLablel.grid(row=0, column=1, padx=10, pady=5)
         self.saveLabel.grid(row=1, column=1, padx=10, pady=5)
@@ -45,8 +55,8 @@ class App:
         self.txtButton.grid(row=0, column=0, padx=10, pady=5)
         self.saveButton.grid(row=1, column=0, padx=10, pady=5)
         self.readButton.grid(row=2, column=0, padx=10, pady=5)
-        self.dropboxButton.grid(row=3, column=0, padx=10, pady=5)
-        self.uploadButton.grid(row=4, column=0, padx=10, pady=5)
+        self.dropboxButton.grid(row=3, column=1, padx=10, pady=5)
+        self.uploadButton.grid(row=3, column=0, padx=10, pady=5)
 
         self.statusLabel.grid(row=2, column=0, sticky='we')
 
@@ -55,34 +65,36 @@ class App:
         self.root.mainloop()
 
     def ReadLog(self):
+        if not path.exists(self.savePath):
+            makedirs(self.savePath)
         self.LogToCSV()
         self.CSVToExcel()
         self.CheckIfOnline()
-        self.EnableUpload()
+        self.EnableButtons()
 
     def FileDialog(self):
-        self.logTxtPath = filedialog.askopenfilename(initialdir = os.path.realpath(__file__), title = 'Select log file', filetypes = (('TXT files', '*.TXT'), ('txt files', '*.txt'), ('all files', '*.*')))
+        self.logTxtPath = filedialog.askopenfilename(initialdir = path.realpath(__file__), title = 'Select log file', filetypes = (('TXT files', '*.TXT'), ('txt files', '*.txt'), ('all files', '*.*')))
         self.txtText.set(self.logTxtPath)
         self.CheckIfOnline()
-        self.EnableUpload()
+        self.EnableButtons()
 
     def DirDialog(self):
-        self.savePath = filedialog.askdirectory(initialdir = os.path.realpath(__file__), title = 'Select save directory')
+        self.savePath = filedialog.askdirectory(initialdir = path.realpath(__file__), title = 'Select save directory')
         self.saveText.set(self.savePath)
         self.CheckIfOnline()
-        self.EnableUpload()
+        self.EnableButtons()
 
     def initDropbox(self):
         self.dbx = dropbox.Dropbox(self.TOKEN)
         self.CheckIfOnline()
-        self.EnableUpload()
+        self.EnableButtons()
 
     def CheckIfOnline(self):
         try:
             self.dbx.users_get_current_account()
             self.isOnline = True
             self.dropboxButton['state'] = tk.DISABLED
-            self.dropboxButton['text'] = 'Online'
+            self.dropboxButton['text'] = "You're already online"
         except:
             print('Offline!')
             self.isOnline = False
@@ -90,11 +102,16 @@ class App:
             self.dropboxButton['text'] = 'Go Online'
         self.UpdateStatus()
 
-    def EnableUpload(self):
-        if os.path.exists(os.path.join(self.savePath, 'Log.csv')) and os.path.exists(os.path.join(self.savePath, 'Log.xlsx')) and self.isOnline:
+    def EnableButtons(self):
+        if path.exists(path.join(self.savePath, 'Log.csv')) and path.exists(path.join(self.savePath, 'Log.xlsx')) and self.isOnline:
             self.uploadButton['state'] = tk.NORMAL
         else:
             self.uploadButton['state'] = tk.DISABLED
+
+        if path.exists(self.logTxtPath):
+            self.readButton['state'] = tk.NORMAL
+        else:
+            self.readButton['state'] = tk.DISABLED
 
     def UpdateStatus(self):
         if self.isOnline:
@@ -180,7 +197,7 @@ class App:
         #resize sessionBeginRows
         sessionBeginRows = sessionBeginRows[1:]
 
-        csvFile = open(os.path.join(self.savePath, 'Log.csv'), 'w+')
+        csvFile = open(path.join(self.savePath, 'Log.csv'), 'w+')
         csvFile.write(csvText)
         csvFile.close()
 
@@ -188,10 +205,13 @@ class App:
 
     def CSVToExcel(self):
         CHART_SPACING = 15
-        workbook = xlsxwriter.Workbook(os.path.join(self.savePath, 'Log.xlsx'))
+        workbook = xlsxwriter.Workbook(path.join(self.savePath, 'Log.xlsx'))
         worksheet1 = workbook.add_worksheet()
         worksheet2 = workbook.add_worksheet()
-        csvFile = open(os.path.join(self.savePath, 'Log.csv'), 'r')
+        csvFile = open(path.join(self.savePath, 'Log.csv'), 'r')
+        if not csvFile:
+            print("couldn't open file")
+            return
         csvTextLines = csvFile.readlines()
         csvFile.close()
 
@@ -262,55 +282,95 @@ class App:
     def CheckIfFileExistsDbx(self, dbxPath):
         bExists = False
         try:
-            a = self.dbx.files_get_metadata(dbxPath)
+            self.dbx.files_get_metadata(dbxPath)
             bExists = True
         except:
             bExists = False
         return bExists
 
-    def PromptOverwrite(self):
-        t = tk.Toplevel(self.root)
-        t.wm_title('File already exists!')
-        tk.Label(t, text='File already exists!').grid(row=0, column=1)
-        selected = 0
-        def PromptChoice(choice):
-            selected = choice
-            t.quit()
-            t.destroy()
-        tk.Button(t, text='Cancel', command=lambda: PromptChoice(0)).grid(row=1, column=0)
-        tk.Button(t, text='Overwrite', command=lambda: PromptChoice(1)).grid(row=1, column=1)
-        tk.Button(t, text='Keep Both', command=lambda: PromptChoice(2)).grid(row=1, column=2)
-        print('pinga')
-        return selected
+    def OnUploadPress(self):
 
-    def SaveToDropbox(self):
+        self.CheckIfOnline()
+        if not self.isOnline:
+            return
         
         self.statusText.set('Uploading...')
         self.statusLabel.update_idletasks()
 
-        if self.CheckIfFileExistsDbx(os.path.join(self.savePath, 'Log.csv')):
-            selection = self.PromptOverwrite()
-            if selection == 0:
-                pass
-            if selection == 1:
-                with open(os.path.join(self.savePath, 'Log.csv'), 'rb') as f:
-                    self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.csv', mode=dropbox.files.WriteMode.overwrite)
-        else:
-            with open(os.path.join(self.savePath, 'Log.csv'), 'rb') as f:
-                self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.csv')
+        dbxDuplicatesList = ['', '']
+        self.dbxUploadReady = True
+        self.dbxUploadOrNots =  [False, False]
 
-        if self.CheckIfFileExistsDbx(os.path.join(self.savePath, 'Log.xlsx')):
-            selection = self.PromptOverwrite()
-            if selection == 0:
-                pass
-            if selection == 1:
-                with open(os.path.join(self.savePath, 'Log.xlsx'), 'rb') as f:
-                    self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.xlsx', mode=dropbox.files.WriteMode.overwrite)
+        if self.CheckIfFileExistsDbx(self.csvDbxSave):
+            dbxDuplicatesList[0] = self.csvDbxSave
+            self.dbxUploadReady = False
+            self.dbxUploadOrNots[0] = False
+            self.radioButtons1Var.set(False)
         else:
-            with open(os.path.join(self.savePath, 'Log.csv'), 'rb') as f:
-                self.dbx.files_upload(f.read(), '/LabinoPlantas/Logs/Log_' + str(date.today()) + '.xlsx')
+            self.dbxUploadOrNots[0] = True
+            self.radioButtons1Var.set(True)
+        if self.CheckIfFileExistsDbx(self.xlsxDbxSave):
+            dbxDuplicatesList[1] = self.xlsxDbxSave
+            self.dbxUploadReady = False
+            self.dbxUploadOrNots[1] = False
+            self.radioButtons2Var.set(False)
+        else:
+            self.dbxUploadOrNots[1] = True
+            self.radioButtons2Var.set(True)
 
-        self.UpdateStatus()
+        def Upload():
+            if self.dbxUploadOrNots[0]:
+                with open(path.join(self.savePath, 'Log.csv'), 'rb') as f:
+                    self.dbx.files_upload(f.read(), self.csvDbxSave, mode=dropbox.files.WriteMode.overwrite)
+
+            if self.dbxUploadOrNots[1]:
+                with open(path.join(self.savePath, 'Log.csv'), 'rb') as f:
+                    self.dbx.files_upload(f.read(), self.xlsxDbxSave, mode=dropbox.files.WriteMode.overwrite)
+
+            self.UpdateStatus()
+
+        def FillCsvColumn(col):
+            tk.Label(f1, text=dbxDuplicatesList[0], relief=tk.RIDGE).grid(row=0, column=col, padx=7, pady=7)
+            tk.Radiobutton(f1, text="Don't Upload", variable=self.radioButtons1Var, value=False).grid(row=1, column=col, pady=7, padx=15, sticky='w')
+            tk.Radiobutton(f1, text="Overwrite", variable=self.radioButtons1Var, value=True).grid(row=2, column=col, pady=7, padx=15, sticky='w')
+        def FillXlsxColumn(col):
+            tk.Label(f1, text=dbxDuplicatesList[1], relief=tk.RIDGE).grid(row=0, column=col, padx=7, pady=7)
+            tk.Radiobutton(f1, text="Don't Upload", variable=self.radioButtons2Var, value=False).grid(row=1, column=col, pady=7, padx=15, sticky='w')
+            tk.Radiobutton(f1, text="Overwrite", variable=self.radioButtons2Var, value=True).grid(row=2, column=col, pady=7, padx=15, sticky='w')
+
+        def OKButton():
+            t.destroy()
+            self.dbxUploadReady = True
+            self.dbxUploadOrNots[0] = self.radioButtons1Var.get()
+            self.dbxUploadOrNots[1] = self.radioButtons2Var.get()
+            Upload()
+
+        def CancelButton():
+            self.dbxUploadReady = False
+            t.destroy()
+            self.UpdateStatus()
+
+        if self.dbxUploadOrNots[0] and self.dbxUploadOrNots[1]:
+            Upload()
+        else:
+            t = tk.Toplevel(self.root)
+            t.wm_title('File/s already exists!')
+            tk.Label(t, text='File/s already exists!').grid(row=0, column=0, pady=7, padx=10)
+            f1 = tk.Label(t)
+            f1.grid(row=1, column=0)
+            f2 = tk.Label(t)
+            f2.grid(row=2, column=0)
+            tk.Button(f2, text='Cancel', command=CancelButton).grid(row=0, column=0, padx=10, pady=7)
+            tk.Button(f2, text='OK', command=OKButton).grid(row=0, column=1, padx=10, pady=7)
+            
+            if not True in self.dbxUploadOrNots:
+                FillCsvColumn(0)
+                FillXlsxColumn(1)
+            elif self.dbxUploadOrNots[0] == False:
+                FillCsvColumn(0)
+            elif self.dbxUploadOrNots[1] == False:
+                FillXlsxColumn(0)
+
 
 if __name__ == '__main__':
     app = App()
