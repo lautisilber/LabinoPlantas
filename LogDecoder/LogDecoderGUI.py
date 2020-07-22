@@ -108,7 +108,7 @@ class App:
         else:
             self.uploadButton['state'] = tk.DISABLED
 
-        if path.exists(self.logTxtPath):
+        if path.exists(self.logTxtPath) and (self.logTxtPath.endswith('.TXT') or self.logTxtPath.endswith('.txt')):
             self.readButton['state'] = tk.NORMAL
         else:
             self.readButton['state'] = tk.DISABLED
