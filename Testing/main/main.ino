@@ -1,6 +1,6 @@
+#include <SPI.h>
 #include <SD.h>
 #include <DHT.h>
-#include <SoftwareSerial.h>
 
 #define DHTTYPE DHT22
 
@@ -8,20 +8,18 @@
 const int checkTime = 3 * 1000;
 const int maxHumidity = 85;
 const int minHumidity = 40;
-const unsigned int maxWaterLevel = 900;
-const unsigned int minWaterLevel = 200;
+const int floodTime = 1;
+const int flushTime = 1;
 const String logFileName = "log.txt";
 unsigned int userInputTimeout = 30 * 1000;
 
 //pins
 const byte sdPin = 10;
-const byte dht22Pin = 2;
+const byte dht22Pin = 9;
 const byte soilMoisturePins[] = {A0, A0};
-const byte waterLevelSensor = A1;
-const byte pumpInPin = 5;
-const byte pumpOutPin = 4;
-const byte cardActivity = 6;
-const byte btActivity = 7;
+const byte pumpInPin = 3;
+const byte pumpOutPin = 2;
+const byte cardActivity = 4;
 
 //General
 unsigned long lastTime = 0;
@@ -45,8 +43,9 @@ float humidity;
 //pump
 byte pumpState = 0;
 byte pumpLastState = 0;
-bool pumpInState = false;
-bool pumpOutState = false;
+bool pumpInState = 0;
+bool pumpOutState = 0;
+unsigned long pumpCheckSetTime = 0;
 bool isFlooded = false;
 
 void setup()
@@ -130,17 +129,15 @@ bool SD_init(bool SD_notReinit)
 
 void FileWrite(String fileName, String msg)
 {
-  //Serial.print(F("logging... "));
-  Serial.println("PRENDER");
+  Serial.print(F("logging... "));
   SetPin(cardActivity, true);
   logFile = SD.open("log.txt", FILE_WRITE);
   if (logFile)
   {
-    //logFile.print(msg);
+    logFile.print(msg);
     logFile.close();
-    //Serial.println(F("done"));
+    Serial.println(F("done"));
     SetPin(cardActivity, false);
-    Serial.println("APAGAR");
     failedWrites = 0;
   }
   else
@@ -271,6 +268,7 @@ void CheckPumpState()
         SetPin(pumpInPin, true);
         pumpInState = true;
         isFlooded = true;
+        pumpCheckSetTime = millis();
         pumpLastState = 1;
       }
     }
@@ -280,6 +278,7 @@ void CheckPumpState()
       {      
         SetPin(pumpOutPin, true);      
         pumpOutState = true;
+        pumpCheckSetTime = millis();
         pumpLastState = 2;
       }
     }
@@ -294,7 +293,7 @@ void PumpCloseControl()
 {
   if (pumpInState)
   {
-    if (analogRead(waterLevelSensor) >= maxWaterLevel)
+    if (millis() - pumpCheckSetTime >= floodTime * 1000)
     {
       SetPin(pumpInPin, false);
       pumpInState = false;
@@ -302,7 +301,7 @@ void PumpCloseControl()
   }
   if (pumpOutState)
   {
-    if (analogRead(waterLevelSensor) <= minWaterLevel)
+    if (millis() - pumpCheckSetTime >= flushTime * 1000)
     {
       SetPin(pumpOutPin, false);
       isFlooded = false;

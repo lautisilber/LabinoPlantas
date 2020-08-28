@@ -1,205 +1,101 @@
-#include <SPI.h>
-#include <SD.h>
+#include <SD_Labino.h>
 #include <DHT.h>
 
 #define DHTTYPE DHT22
 
-//parameters (checktime should be greater than 2)
-const int checkTime = 3 * 1000;
-const int maxHumidity = 85;
-const int minHumidity = 40;
-const int floodTime = 1;
-const int flushTime = 1;
-const String logFileName = "log.txt";
-unsigned int userInputTimeout = 30 * 1000;
+// parameters
+const unsigned int checkTime = 3 * 1000;
+const unsigned int minHumidity = 40;
+const unsigned int maxHumidity = 85;
 
-//pins
+// pins
 const byte sdPin = 10;
-const byte dht22Pin = 9;
+const byte dht22Pin = 3;
 const byte soilMoisturePins[] = {A0, A0};
-const byte pumpInPin = 3;
-const byte pumpOutPin = 2;
-const byte cardActivity = 4;
+const byte waterSensorPin = A1;
+const byte pumpInPin = 7;
+const byte pumpOutPin = 6;
+const byte sdActivity = 5;
+const byte btActivity = 5;
 
-//General
+// general
 unsigned long lastTime = 0;
 bool tick = false;
 
-//logging
-File logFile;
-String logLine;
-unsigned int logSession = 0;
-unsigned int failedWrites = 0;
+// SD
+SD_Labino sd = SD_Labino(sdPin, sdActivity);
+String logString;
 
-//soil moisture sensor
+// soil moisture sensors
 int soilMoistureValues[sizeof(soilMoisturePins)];
 float averageMoisture;
 
-//dht22
+// dht22
 DHT dht(dht22Pin, DHTTYPE);
 float temperature;
 float humidity;
 
-//pump
+// pump
 byte pumpState = 0;
 byte pumpLastState = 0;
-bool pumpInState = 0;
-bool pumpOutState = 0;
-unsigned long pumpCheckSetTime = 0;
+bool pumpInEnabled = false;
+bool pumpOutEnabled = false;
 bool isFlooded = false;
 
 void setup()
 {
   Serial.begin(9600);
-
-  SD_init(true);
-  PinsInit();
-  dht_init();
+  sd.init();
+  dht.begin();
+  pinMode(pumpInPin, OUTPUT);
+  pinMode(pumpOutPin, OUTPUT);
 }
 
-void loop() 
+void loop()
 {
   if (millis() - lastTime >= checkTime)
   {
     tick = true;
     ReadDHT22();
     ReadSoilMoisture();
-    
     lastTime = millis();
   }
 
-  CheckPumpState();
-  PumpCloseControl();
+  PumpStateManager();
 
-  delay(10); //optional
-  
+  delay(10);
+
   if (tick)
   {
-    LogToSD();
+    Log();
     tick = false;
   }
 }
 
-//General
-void PinsInit()
+void Log()
 {
-  pinMode(pumpInPin, OUTPUT);
-  pinMode(pumpOutPin, OUTPUT);
-  pinMode(cardActivity, OUTPUT);
-  SetPin(pumpInPin, false);
-  SetPin(pumpOutPin, false);
-  SetPin(cardActivity, false);
-}
-
-void SetPin(byte pin, bool state)
-{
-  digitalWrite(pin, state);
-}
-
-// Logging
-bool SD_init(bool SD_notReinit)
-{
-  while (!Serial){ }
-  Serial.print(F("init SD... "));
-  if (!SD.begin(sdPin))
-  {
-    Serial.println(F("error!"));
-    if (SD_notReinit)
-    {
-      while (true) {  }
-    }
-  }
-  else if (!SD_notReinit)
-  {
-    SetPin(cardActivity, false);
-    Serial.println("done");
-  }
-  
-  if (SD_notReinit)
-  {
-    Serial.println("done");
-    Serial.print(F("Write log entry: "));
-    logLine = ReadSerial();
-    Serial.print(F("done: "));
-    Serial.println(logLine);
-    logLine += '\n';
-    FileWrite(logFileName, logLine);
-  }
-}
-
-void FileWrite(String fileName, String msg)
-{
-  Serial.print(F("logging... "));
-  SetPin(cardActivity, true);
-  logFile = SD.open("log.txt", FILE_WRITE);
-  if (logFile)
-  {
-    logFile.print(msg);
-    logFile.close();
-    Serial.println(F("done"));
-    SetPin(cardActivity, false);
-    failedWrites = 0;
-  }
-  else
-  {
-    FileError();
-  }
-}
-
-void FileError()
-{
-  Serial.println(F("File error!"));
-  failedWrites++;
-  SD_init(false);
-}
-
-String ReadSerial()
-{
-  unsigned int userInputTime = millis();
-  while (Serial.available() == 0)
-  {
-    if (millis() - userInputTime >= userInputTimeout)
-      return F("Session begin");
-  }
-  return Serial.readString();
-}
-
-void LogToSD()
-{
-  logLine = F("Log ");
-  logLine += String(logSession);
-  logLine += F(":\n\tHum: ");
-  logLine += String(humidity);
-  logLine += F("\n\tTemp: ");
-  logLine += String(temperature);
-  logLine += F("\n\tMoisture Level: ");
-  if (pumpState == 0)
-    logLine += F("right");
-  else if (pumpState == 1)
-    logLine += F("too wet");
-  else
-    logLine += F("too dry");
-  logLine += F("\n\tMoisture Vals:");
-  logLine += F("\n\t\tAvg: ");
-  logLine += String(averageMoisture);
+  logString = F("Hum: ");
+  logString += String(humidity);
+  logString += F("\nTemp: ");
+  logString += String(temperature);
+  logString += F("\nPump ");
+  if (pumpState == 0)  logString += F("closed");
+  else if (pumpState == 1)  logString += F("in open, out closed");
+  else if (pumpState == 2)  logString += F("in closed, out open");
+  logString += F("\nMoisture Vals:");
+  logString += F("\n\tAvg: ");
+  logString += String(averageMoisture);
   for (byte i = 0; i < sizeof(soilMoisturePins); i++)
   {
-    logLine += F("\n\t\t");
-    logLine += String(i + 1);
-    logLine += F(": ");
-    logLine += String(soilMoistureValues[i]);
+    logString += F("\n\t");
+    logString += String(i + 1);
+    logString += F(": ");
+    logString += String(soilMoistureValues[i]);
   }
-  if (failedWrites > 0)
-  {
-    logLine += F("\n\tFAILED WRITES: ");
-    logLine += String(failedWrites);
-  }
-  logLine += F("\n\n");
-  FileWrite(logFileName, logLine);
-  logSession++;
+
+  sd.Log(logString);
 }
 
-//Soil Moisture Sensor
 void ReadSoilMoisture()
 {
   unsigned int sum = 0;
@@ -217,95 +113,80 @@ int SMCalibration(int raw)
   //In the air = too dry (850+)
   //One finger = right (400 - 850)
   //2+ fingers = too wet (400-)
+  //note that map() function exists
   unsigned int value = constrain(raw, 0, 1000);
   return (int)(value / 10);
 }
 
-//DHT22
-
-void dht_init()
-{
-  dht.begin();
-}
-
 void ReadDHT22()
 {
-   humidity = dht.readHumidity();
-   temperature = dht.readTemperature();
+  humidity = dht.readHumidity();
+  temperature = dht.readTemperature();
 
-   if (isnan(humidity) || isnan(temperature))
-   {
-      Serial.println(F("dht error"));
-      if (isnan(humidity))
-        humidity = -1;
-      if (isnan(temperature))
-        temperature = -1;
-   }
+  if (isnan(humidity) || isnan(temperature))
+  {
+    Serial.println(F("dht error"));
+    if (isnan(humidity))
+    {
+      humidity = -1;
+    }
+    if (isnan(temperature))
+    {
+      temperature = -1;
+    }
+  }
 }
 
-//Pumps
-void CheckPumpState()
+void PumpStateManager()
 {
   if (averageMoisture <= minHumidity)
-  {
     pumpState = 1;
-  }
   else if (averageMoisture >= maxHumidity)
-  {
     pumpState = 2;
-  }
   else
-  {
     pumpState = 0;
-  }
 
-  if (pumpLastState != pumpState)
-  {
-    if (pumpState == 1)
-    {  
-      if (!isFlooded)
-      {    
-        SetPin(pumpInPin, true);
-        pumpInState = true;
-        isFlooded = true;
-        pumpCheckSetTime = millis();
-        pumpLastState = 1;
-      }
-    }
-    else if (pumpState == 2)
-    {
-      if (isFlooded)
-      {      
-        SetPin(pumpOutPin, true);      
-        pumpOutState = true;
-        pumpCheckSetTime = millis();
-        pumpLastState = 2;
-      }
-    }
-    else
-    {
-      pumpLastState = 0;
-    }
-  }
+  PumpControl();
 }
 
-void PumpCloseControl()
+int GetWaterLevelStatus()
 {
-  if (pumpInState)
+  int value = analogRead(waterSensorPin);
+  if (value <= 100)      // "dry"
+    return 0;
+  else if (value >= 500) // "flooded"
+    return 2;
+  else                   // filling or flushing
+    return 1;
+}
+
+void PumpControl()
+{
+  int value = GetWaterLevelStatus();
+  if (pumpState == 1 && value != 2) // have to fill
   {
-    if (millis() - pumpCheckSetTime >= floodTime * 1000)
+    if (!pumpInEnabled)
     {
-      SetPin(pumpInPin, false);
-      pumpInState = false;
+      pumpInEnabled = true;
+      digitalWrite(pumpInPin, HIGH);
+    }
+    if (pumpOutEnabled)
+    {
+      pumpOutEnabled = false;
+      digitalWrite(pumpOutPin, LOW);
     }
   }
-  if (pumpOutState)
+  else if (pumpState == 2 && value != 2)
   {
-    if (millis() - pumpCheckSetTime >= flushTime * 1000)
+    if (pumpInEnabled)
     {
-      SetPin(pumpOutPin, false);
-      isFlooded = false;
-      pumpOutState = false;
+      pumpInEnabled = false;
+      digitalWrite(pumpInPin, LOW);
+    }
+    if (!pumpOutEnabled)
+    {
+      pumpOutEnabled = true;
+      digitalWrite(pumpOutPin, HIGH);
     }
   }
 }

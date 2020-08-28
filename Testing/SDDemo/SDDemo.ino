@@ -4,8 +4,8 @@
 File myFile;
 const int sdPin = 10;
 
-const char fileName[] = "test.txt";
-const char message[] = "hola que tal bro\nTodo bien?";
+const char fileName[] = "sets.txt";
+const char message[] = "hola que tal bro\nTodo bien?\n";
 
 void setup() {
   Serial.begin(9600);
