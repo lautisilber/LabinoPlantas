@@ -15,6 +15,8 @@ public:
     SD_Labino(int SDPin, int activityPin = -1, String fileName = "log.txt");
     bool init(bool sessionBegin = true);
     bool Log(String logMsg);
+    bool OpenStream();
+    char ReadFromStream();
     String GetLastLog();
     String ReadFile();
     String GetFileName();

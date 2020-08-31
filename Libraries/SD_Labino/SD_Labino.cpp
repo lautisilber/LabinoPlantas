@@ -59,6 +59,21 @@ bool SD_Labino::Log(String logMsg)
     return this->FileWrite(_logLine);
 }
 
+bool SD_Labino::OpenStream()
+{
+    _logFile = SD.open(_fileName);
+    if(_logFile)
+        return true;
+    else
+        return false;
+    
+}
+
+char SD_Labino::ReadFromStream()
+{
+    return _logFile.read();
+}
+
 String SD_Labino::GetLastLog()
 {
     return _logLine;
