@@ -68,7 +68,7 @@ void loop()
               Serial.println("Pin on");
               _outputPinState = "On";
               digitalWrite(_pin, HIGH);
-            } else if (_header.indexOf("GET /2/off")) {
+            } else if (_header.indexOf("GET /2/off") >= 0) {
               Serial.println("Pin Off");
               _outputPinState = "Off";
               digitalWrite(_pin, LOW);
