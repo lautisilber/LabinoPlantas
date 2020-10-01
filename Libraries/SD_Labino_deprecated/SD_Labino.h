@@ -6,36 +6,32 @@
 #define SD_Labino_h
 #include <SPI.h>
 #include <SD.h>
-#include <ArduinoJson.h>
 
 #include "Arduino.h"
-
-#define JSON_SIZE 200
 
 class SD_Labino
 {
 public:
-    SD_Labino(int SDPin, int activityPin = -1, String fileName = "json.txt");
-    bool begin(bool sessionBegin = true);
+    SD_Labino(int SDPin, int activityPin = -1, String fileName = "log.txt");
+    bool init(bool sessionBegin = true);
+    bool Log(String logMsg);
     bool OpenStream();
     char ReadFromStream();
-    bool IsStreamAvailable();
+    bool IsFileReadAvailable();
     String GetLastLog();
     String ReadFile();
     String GetFileName();
-    bool SaveJson(bool clear=true);
 private:
     void Pin(bool enable);
     String ReadSerial();
 public:
     bool FileWrite(String msg);
-    StaticJsonDocument<JSON_SIZE> jsonDoc;    
-private:
+
     int _SDPin;
     int _activityPin;
     String _logLine;
-    String _fileName;
     File _logFile;
+    String _fileName;
     unsigned int _logSession = 0;
 };
 

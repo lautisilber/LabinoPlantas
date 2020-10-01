@@ -16,14 +16,14 @@ const byte waterSensorPin = A1;
 const byte pumpInPin = 7;
 const byte pumpOutPin = 6;
 const byte sdActivity = 5;
-const byte btActivity = 5;
 
 // general
 unsigned long lastTime = 0;
 bool tick = false;
 
 // SD
-SD_Labino sd = SD_Labino(sdPin, sdActivity);
+const String fileName = "log1.txt";
+SD_Labino sd = SD_Labino(sdPin, sdActivity, fileName);
 String logString;
 
 // soil moisture sensors
@@ -45,7 +45,7 @@ bool isFlooded = false;
 void setup()
 {
   Serial.begin(9600);
-  sd.init();
+  sd.begin();
   dht.begin();
   pinMode(pumpInPin, OUTPUT);
   pinMode(pumpOutPin, OUTPUT);
@@ -61,7 +61,7 @@ void loop()
     lastTime = millis();
   }
 
-  PumpStateManager();
+  PumpControl();
 
   delay(10);
 
@@ -74,26 +74,24 @@ void loop()
 
 void Log()
 {
-  logString = F("Hum: ");
-  logString += String(humidity);
-  logString += F("\nTemp: ");
-  logString += String(temperature);
-  logString += F("\nPump ");
-  if (pumpState == 0)  logString += F("closed");
-  else if (pumpState == 1)  logString += F("in open, out closed");
-  else if (pumpState == 2)  logString += F("in closed, out open");
-  logString += F("\nMoisture Vals:");
-  logString += F("\n\tAvg: ");
-  logString += String(averageMoisture);
+  Serial.println("");
+  Serial.println(humidity);
+  Serial.println(temperature);
+  Serial.println(pumpState);
+  Serial.println(averageMoisture);
+  Serial.println("");
+  sd.jsonDoc["humidity"] = humidity;
+  sd.jsonDoc["temperature"] = temperature;
+  sd.jsonDoc["pump state"] = pumpState;
+  sd.jsonDoc["moisture average"] = averageMoisture;
+  JsonArray moistureVals = sd.jsonDoc.createNestedArray("moisture values");
   for (byte i = 0; i < sizeof(soilMoisturePins); i++)
   {
-    logString += F("\n\t");
-    logString += String(i + 1);
-    logString += F(": ");
-    logString += String(soilMoistureValues[i]);
+    moistureVals.add(soilMoistureValues[i]);
   }
-
-  sd.Log(logString);
+  serializeJson(sd.jsonDoc, Serial);
+  Serial.println();
+  sd.SaveJson();
 }
 
 void ReadSoilMoisture()
@@ -140,13 +138,11 @@ void ReadDHT22()
 void PumpStateManager()
 {
   if (averageMoisture <= minHumidity)
-    pumpState = 1;
+    pumpState = 1; // too dry
   else if (averageMoisture >= maxHumidity)
-    pumpState = 2;
+    pumpState = 2; // too wet
   else
-    pumpState = 0;
-
-  PumpControl();
+    pumpState = 0; // normal
 }
 
 int GetWaterLevelStatus()
@@ -160,9 +156,11 @@ int GetWaterLevelStatus()
     return 1;
 }
 
-void PumpControl()
+void PumpControl() // esto se puede ca,biar según sea necesario
 {
+  PumpStateManager();
   int value = GetWaterLevelStatus();
+  
   if (pumpState == 1 && value != 2) // have to fill
   {
     if (!pumpInEnabled)
@@ -176,7 +174,7 @@ void PumpControl()
       digitalWrite(pumpOutPin, LOW);
     }
   }
-  else if (pumpState == 2 && value != 2)
+  else if (pumpState == 2 && value != 0) // have to flush
   {
     if (pumpInEnabled)
     {

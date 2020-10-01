@@ -13,7 +13,7 @@ SD_Labino::SD_Labino(int SDPin, int activityPin, String fileName)
     }
 }
 
-bool SD_Labino::begin(bool sessionBegin)
+bool SD_Labino::init(bool sessionBegin)
 {
     Serial.print("SD init... ");
     this->Pin(true);
@@ -41,6 +41,24 @@ bool SD_Labino::begin(bool sessionBegin)
     }
 }
 
+bool SD_Labino::Log(String logMsg)
+{
+    _logLine = F("Log ");
+    _logLine += String(_logSession) + '\n';
+    int lastIndex = -1;
+    int index = 0;
+    while (true)
+    {
+    index = logMsg.indexOf('\n', index + 1);
+    if (index == -1)
+        break;
+    _logLine += '\t' + logMsg.substring(lastIndex + 1, index) + '\n';
+    lastIndex = index;
+    }
+    _logSession++;
+    return this->FileWrite(_logLine);
+}
+
 bool SD_Labino::OpenStream()
 {
     _logFile = SD.open(_fileName);
@@ -56,7 +74,7 @@ char SD_Labino::ReadFromStream()
     return _logFile.read();
 }
 
-bool SD_Labino::IsStreamAvailable()
+bool SD_Labino::IsFileReadAvailable()
 {
     return _logFile.available();
 }
@@ -90,7 +108,7 @@ String SD_Labino::ReadFile()
     else
     {
         Serial.println(F("File error!"));
-        this->begin(false);
+        this->init(false);
         return "";
     }
     
@@ -134,20 +152,8 @@ bool SD_Labino::FileWrite(String msg)
     else
     {
         Serial.println(F("File error!"));
-        this->begin(false);
+        this->init(false);
         return false;
-    }    
-}
-
-bool SD_Labino::SaveJson(bool clear)
-{
-    bool success;
-    serializeJson(jsonDoc, _logLine);
-    success = this->FileWrite(_logLine + '\n');
-    if (clear)
-    {
-        jsonDoc.clear();
-        _logLine = "";
     }
-    return success;
+    
 }
