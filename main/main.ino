@@ -1,4 +1,5 @@
 #include <SD_Labino.h>
+#include <SoftwareSerial.h>
 #include <DHT.h>
 
 #define DHTTYPE DHT22
@@ -25,6 +26,10 @@ bool tick = false;
 const String fileName = "log1.txt";
 SD_Labino sd = SD_Labino(sdPin, sdActivity, fileName);
 String logString;
+
+//esp8266
+SoftwareSerial espSerial(8, 9);
+const byte espActivity = 5;
 
 // soil moisture sensors
 int soilMoistureValues[sizeof(soilMoisturePins)];
