@@ -6,11 +6,14 @@ File myFile;
 
 SoftwareSerial espSerial(2, 3);
 
+const byte activityPin = 7;
 const byte sdPin = 10;
-const String fileName = "log.txt";
+const String fileName = "wifi.txt";
 
 void setup() {
   Serial.begin(9600);
+  pinMode(activityPin, OUTPUT);
+  digitalWrite(activityPin, LOW);
   while (!Serial) {;}
   espSerial.begin(115200);
 
@@ -24,18 +27,14 @@ void setup() {
   Serial.println("done.");
 
   // read file
-  ReadFile();
+  SendFile();
 }
 
-void loop() {
-  if (espSerial.available())
-  {
-    espSerial.flush();
-    ReadFile();
-  }
+void loop()
+{
 }
 
-void ReadFile()
+void SendFile()
 {
   myFile = SD.open(fileName, FILE_READ);
   if (!myFile)
@@ -45,10 +44,40 @@ void ReadFile()
     return;
   }
 
+  digitalWrite(activityPin, HIGH);
+  espSerial.write('@');
   while (myFile.available())
   {
     Serial.write(myFile.peek());
     espSerial.write(myFile.read());
   }
+  espSerial.write('@');
+  digitalWrite(activityPin, LOW);
   myFile.close();
+}
+
+void WriteFile()
+{
+  myFile = SD.open(fileName, FILE_WRITE);
+  if (!myFile)
+  {
+    Serial.print("error opening ");
+    Serial.println(fileName);
+    return;
+  }
+
+  for (byte i = 0; i < 10; i++)
+  {
+    myFile.print("Testing... ");
+    myFile.println(String(i + 1));
+  }
+  myFile.close();
+}
+
+void espSerialFlush()
+{
+  while (espSerial.available())
+  {
+    espSerial.read();
+  }
 }

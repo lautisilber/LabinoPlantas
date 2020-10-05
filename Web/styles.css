@@ -1,0 +1,70 @@
+html{
+    font-family: Arial, sans-serif;
+}
+
+h1 { font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; text-align: center; }
+h2 { font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; }
+h3 { font-size: 18px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; }
+
+.buttonNav {
+    background-color: #1c96dd;
+    border: none;
+    color: white;
+    padding: 12px 26px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 2px;
+    transition-duration: 0.4s;
+  }
+  .buttonNav:hover {
+    background-color: #187eb9;
+    color: #dfdfdf;
+  }
+  .buttonNav:active {
+    background-color: #156694;
+    color: #bebebe;
+  }
+
+.button1 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 2px;
+    transition-duration: 0.4s;
+  }
+  .button1:hover {
+    background-color: #3c913f;
+    color: #dfdfdf;
+  }
+  .button1:active {
+    background-color: #307433;
+    color: #bebebe;
+  }
+
+  .buttonBack {
+    background-color: #eb4242;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 2px;
+    transition-duration: 0.4s;
+  }
+  .buttonBack:hover {
+    background-color: #be3434;
+    color: #dfdfdf;
+  }
+  .buttonBack:active {
+    background-color: #9e2e2e;
+    color: #bebebe;
+  }

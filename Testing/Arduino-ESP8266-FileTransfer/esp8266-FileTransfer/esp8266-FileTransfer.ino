@@ -6,13 +6,14 @@ const char* SSID = "Wifi-Casa";
 const char* PASSWORD = "canotaje";
 WiFiServer server(80);
 
+const String fileName = "/test.txt";
 File myFile;
+bool fileIn = false;
 
-String incomingStr = "";
-
+String fileString = "";
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   while (!Serial) {;}
   // Connect to Wi-Fi network with SSID and PASSWORD
   Serial.print("Connecting to ");
@@ -38,10 +39,11 @@ void setup() {
   }
   Serial.println("done");
 
-  SPIFFS.remove("/test.txt");
+  SPIFFS.remove(fileName);
 }
 
 void loop() {
+  fileIn = FileWriteFromSerial();
   WiFiClient client = server.available();
   if (!client) {
      return;
@@ -53,7 +55,6 @@ void loop() {
   client.flush();
 
   if (request.indexOf("/filetest") != -1)  {
-    FileWrite();
     FileRead();
   }
 
@@ -62,13 +63,40 @@ void loop() {
   client.println(""); 
   client.println("<!DOCTYPE HTML>");
   client.println("<html>");
-  client.print("Hello world!");
-  client.println("<tr><td><a href=\"/filetest\"\"><br>Toggle LED<br><br></a></td></tr>");
+  client.print("File says: ");
+  client.print(fileString);
   client.println("</html>");
   Serial.println("");
   
 }
 
+
+bool FileWriteFromSerial()
+{
+  if (!Serial.available())
+    return false;
+  if ((char)Serial.read() != '@')
+    return false;
+  
+  myFile = SPIFFS.open(fileName, "w");
+  if (!myFile)
+  {
+    Serial.println("error opening file!");
+    return false;
+  }
+  unsigned int readStartTime = millis();
+  while (Serial.peek() != '@')
+  {
+    myFile.print((char)Serial.read());
+    if (millis() - 20000 > readStartTime)
+      break;
+  }
+  myFile.println();
+  myFile.close();
+  return true;
+}
+
+/*
 void FileWrite()
 {
   myFile = SPIFFS.open("/test.txt", "a+");
@@ -84,18 +112,4 @@ void FileWrite()
   }
   myFile.close();
 }
-
-void FileRead()
-{
-  myFile = SPIFFS.open("/test.txt", "r");
-  if (!myFile)
-  {
-    Serial.println("error opening file!");
-    return;
-  }
-  while (myFile.available())
-  {
-    Serial.write(myFile.read());
-  }
-  myFile.close();
-}
+*/
