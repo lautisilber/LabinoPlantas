@@ -70,7 +70,6 @@ void loop() {
   
 }
 
-
 bool FileWriteFromSerial()
 {
   if (!Serial.available())

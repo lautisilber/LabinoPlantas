@@ -18,8 +18,9 @@ public:
     SD_Labino(int SDPin, int activityPin = -1, String fileName = "json.txt");
     bool begin(bool sessionBegin = true);
     bool OpenStream();
-    char ReadFromStream();
+    char ReadStream();
     bool IsStreamAvailable();
+    void CloseStream();
     String GetLastLog();
     String ReadFile();
     String GetFileName();

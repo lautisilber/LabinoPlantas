@@ -51,7 +51,7 @@ bool SD_Labino::OpenStream()
     
 }
 
-char SD_Labino::ReadFromStream()
+char SD_Labino::ReadStream()
 {
     return _logFile.read();
 }
@@ -59,6 +59,11 @@ char SD_Labino::ReadFromStream()
 bool SD_Labino::IsStreamAvailable()
 {
     return _logFile.available();
+}
+
+void SD_Labino::CloseStream()
+{
+    _logFile.close();
 }
 
 String SD_Labino::GetLastLog()

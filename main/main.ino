@@ -5,9 +5,9 @@
 #define DHTTYPE DHT22
 
 // parameters
-const unsigned int checkTime = 3 * 1000;
-const unsigned int minHumidity = 40;
-const unsigned int maxHumidity = 85;
+unsigned int checkTime = 3 * 1000;
+unsigned int minHumidity = 40;
+unsigned int maxHumidity = 85;
 
 // pins
 const byte sdPin = 10;
@@ -30,6 +30,7 @@ String logString;
 //esp8266
 SoftwareSerial espSerial(8, 9);
 const byte espActivity = 5;
+StaticJsonDocument<50> espJson;
 
 // soil moisture sensors
 int soilMoistureValues[sizeof(soilMoisturePins)];
@@ -50,6 +51,7 @@ bool isFlooded = false;
 void setup()
 {
   Serial.begin(9600);
+  espSerial.begin(115200);
   sd.begin();
   dht.begin();
   pinMode(pumpInPin, OUTPUT);
@@ -63,16 +65,17 @@ void loop()
     tick = true;
     ReadDHT22();
     ReadSoilMoisture();
+    EspSendSensorValues();
     lastTime = millis();
   }
 
   PumpControl();
 
-  delay(10);
-
   if (tick)
   {
     Log();
+    delay(10);
+    EspSendFile();
     tick = false;
   }
 }
@@ -85,11 +88,11 @@ void Log()
   Serial.println(pumpState);
   Serial.println(averageMoisture);
   Serial.println("");
-  sd.jsonDoc["humidity"] = humidity;
-  sd.jsonDoc["temperature"] = temperature;
-  sd.jsonDoc["pump state"] = pumpState;
-  sd.jsonDoc["moisture average"] = averageMoisture;
-  JsonArray moistureVals = sd.jsonDoc.createNestedArray("moisture values");
+  sd.jsonDoc[F("humidity")] = humidity;
+  sd.jsonDoc[F("temperature")] = temperature;
+  sd.jsonDoc[F("pump state")] = pumpState;
+  sd.jsonDoc[F("moisture average")] = averageMoisture;
+  JsonArray moistureVals = sd.jsonDoc.createNestedArray(F("moisture values"));
   for (byte i = 0; i < sizeof(soilMoisturePins); i++)
   {
     moistureVals.add(soilMoistureValues[i]);
@@ -192,4 +195,34 @@ void PumpControl() // esto se puede ca,biar según sea necesario
       digitalWrite(pumpOutPin, HIGH);
     }
   }
+}
+
+bool EspSendFile()
+{
+  if(!sd.OpenStream())
+  {
+    Serial.println(F("Error opening file stream"));
+    return false;
+  }
+
+  digitalWrite(espActivity, HIGH);
+  espSerial.write('@');
+  while (sd.IsStreamAvailable())
+  {
+    char in = sd.ReadStream();
+    espSerial.write(in);
+  }
+  espSerial.write('@');
+  digitalWrite(espActivity, LOW);
+  sd.CloseStream();
+  return true;
+}
+
+void EspSendSensorValues()
+{
+  espJson[F("soilmoisture")] = averageMoisture;
+  espJson[F("temperature")] = temperature;
+  espJson[F("humidity")] = humidity;
+  espSerial.write('$');
+  serializeJson(espJson, espSerial);
 }
