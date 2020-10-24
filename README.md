@@ -1,5 +1,5 @@
-# LabinoPlantas
-Plant Control Automatization with Arduino
+# Labino Plantas
+Plant automated monitorization with Arduino
 Needed Libraries:
 * DHT sensor Library (by Adafruit)
 * SD (by Arduino and SparkFun)
