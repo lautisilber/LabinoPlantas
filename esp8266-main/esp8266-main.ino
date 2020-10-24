@@ -82,9 +82,13 @@ void setup(){
   
   // Connect to Wi-Fi
   WiFi.begin(ssid, password);
+  Serial.print("Connecting to ");
+  Serial.print(ssid);
   while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
+    delay(500);
+    Serial.print(" .");
   }
+  Serial.println(" done");
 
   // Route for root / web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
